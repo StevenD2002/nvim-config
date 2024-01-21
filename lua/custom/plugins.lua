@@ -22,9 +22,14 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  {
+    "rasulomaroff/reactive.nvim",
+    config = function()
+      require "custom.configs.reactive"
+    end,
+  },
 
   -- override plugin configs
-
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -74,7 +79,7 @@ local plugins = {
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-      suggestion = { enabled = false},
+      suggestion = { enabled = false },
       panel = { enabled = false },
       filetypes = {
         markdown = true,
@@ -119,8 +124,6 @@ local plugins = {
       },
     },
   },
-
-
 
   -- To make a plugin not be loaded
   -- {

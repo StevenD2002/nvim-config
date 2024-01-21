@@ -15,10 +15,10 @@ local sources = {
   b.formatting.clang_format,
 
   -- go
-  b.formatting.gofmt,
+  b.formatting.gofumpt,
   b.formatting.goimports,
 }
-
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = vim.lsp.buf.format })
 null_ls.setup {
   debug = true,
   sources = sources,

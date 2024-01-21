@@ -10,8 +10,10 @@ M.treesitter = {
     "typescript",
     "tsx",
     "c",
+    "go",
     "markdown",
     "markdown_inline",
+    "templ",
   },
   indent = {
     enable = true,
@@ -37,6 +39,12 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- go stuff
+    "gopls",
+    "templ",
+  
+    
   },
 }
 M.copilot = {
