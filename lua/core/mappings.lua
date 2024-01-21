@@ -48,9 +48,22 @@ M.general = {
 
     ["<leader>fm"] = {
       function()
-        vim.lsp.buf.format { async = true }
+        local current_file = vim.fn.expand "%:p"
+        local current_directory = vim.fn.expand "%:p:h"
+
+        -- Check if the file has a .templ extension
+        if vim.fn.match(current_file, ".templ$") > 0 then
+          -- Run templ formatter for .templ files in the current directory
+          vim.fn.system("templ fmt " .. current_directory)
+        else
+          -- Run your LSP formatter for other file types
+          vim.lsp.buf.format { async = true }
+        end
+
+        -- reload current buffer to see the changes
+        vim.cmd("e")
       end,
-      "LSP formatting",
+      "Format with templ or LSP",
     },
   },
 
